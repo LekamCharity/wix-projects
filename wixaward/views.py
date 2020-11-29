@@ -18,7 +18,7 @@ def index(request):
         random_post = posts[a_post]
     except Post.DoesNotExist:
         posts = None
-    return render(request, 'html', {'posts': posts, 'form': form, 'random_post': random_post})
+    return render(request, 'wix/index.html', {'posts': posts, 'form': form, 'random_post': random_post})
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
@@ -46,11 +46,11 @@ def signup(request):
             return redirect('index')
         else:
             form = SignupForm()
-        return render(request,'input here a form',{'form':form})
+        return render(request,'registration/registration_form',{'form':form})
 
 @login_required(login_url='/accounts/login')
 def profile(request,username):
-    return render(request,'profile.html')
+    return render(request,'users.html')
 
 def user_profile(request,username):
     user_prof = get_object_or_404(User,username= username)
@@ -59,7 +59,7 @@ def user_profile(request,username):
     context = {
         'user-prof':user_prof
     }    
-    return render(request,'html',context)
+    return render(request,'userprofile.html',context)
 
 @login_required(login_url='login')
 def edit_profile(request, username):
@@ -78,7 +78,7 @@ def edit_profile(request, username):
         'user_form': user_form,
         'prof_form': prof_form
     }
-    return render(request, 'html', params)
+    return render(request, 'review.html', params)
 @login_required(login_url='/accounts/login')
 def project(request, id):
     post = Post.objects.get(id=id)
@@ -122,4 +122,4 @@ def project(request, id):
         'rating_status': rating_status
 
     }
-    return render(request, 'html', params)
+    return render(request, 'projects.html', params)
