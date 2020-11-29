@@ -1,0 +1,1 @@
+web: gunicorn wixproject.wsgi --log-file - 
