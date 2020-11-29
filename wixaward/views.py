@@ -27,7 +27,7 @@ def index(request):
         random_post = posts[a_post]
     except Post.DoesNotExist:
         posts = None
-    return render(request, 'wix/index.html', {'posts': posts, 'form': form, 'random_post': random_post})
+    return render(request, 'index.html', {'posts': posts, 'form': form, 'random_post': random_post})
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
@@ -55,7 +55,7 @@ def signup(request):
             return redirect('index')
         else:
             form = SignupForm()
-        return render(request,'registration/registration_form',{'form':form})
+        return render(request,'django_registration/registration_form',{'form':form})
 
 @login_required(login_url='/accounts/login')
 def profile(request,username):

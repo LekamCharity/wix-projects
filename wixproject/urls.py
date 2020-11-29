@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib.auth import views
 from django.conf.urls import url, include
 from django.contrib import admin
+from django_registration.backends.one_step.views import RegistrationView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('wixaward.urls')),
-    url(r'^accounts/',include('registration.backends.simple.urls')),
-    url(r'^logout/$', views.logout, {"next_page": '/'}),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/',include('django_registration.backends.one_step.urls')),
+    path('logout/', views.logout, {"next_page": '/'}),
 ]
 
