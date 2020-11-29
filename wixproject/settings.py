@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
+import django_heroku
+from decouple import config,Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'pyuploadcare.dj',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -40,6 +44,11 @@ INSTALLED_APPS = [
     'wixaward',
     'bootstrap4',
 ]
+
+UPLOADCARE = {
+    'pub_key': '965251c5986d9ddbf172',
+    'secret': '11e095502e7da466a04c',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
