@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'wixaward.apps.WixawardConfig',
     'crispy_forms', 
     'url_or_relative_url_field',
+    'wix.apps.WixConfig',
+    'star_ratings',
+    'mathfilters',
 ]
 
 UPLOADCARE = {
