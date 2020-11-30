@@ -14,16 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 
-from django.contrib.auth import views
-from django.conf.urls import url, include
 from django.contrib import admin
-from django_registration.backends.one_step.views import RegistrationView
+from django.contrib.auth import views as auth_views
+from django.urls import path, include
+from wix import views as user_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'',include('wixaward.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/',include('django_registration.backends.one_step.urls')),
-    path('logout/', views.logout, {"next_page": '/'}),
+    path('admin/', admin.site.urls),
+    path('', include('wix.urls')),
+    path('register/', user_views.register, name='register'),
+    path('login/', auth_views.LoginView.as_view(template_name='user/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
+    path('profile/', user_views.profile, name='profile'),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
