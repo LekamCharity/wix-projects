@@ -17,7 +17,6 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'user/register.html', {'form': form})
 
-
 @login_required
 def profile(request):
     if request.method == 'POST':
