@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootswatch.css' %}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Charmonman|Pangolin" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+  {% if title %}
+  <title>WIX-PROJECTS {{ title }}</title>
+  {% else %}
+  <title>WIX-PROJECTS</title>
+  {% endif %}
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md fixed-top">
+      <a class="navbar-brand mr-4" href="{% url 'pages-home' %}">wix-projects</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+        aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="{% url 'pages-home' %}"></a>
+        </div>
+        <div class="navbar-nav">
+          {% if user.is_authenticated %}
+          <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+          <span class="submit-button">
+            <a class="nav-item nav-link" href="{% url 'post-create' %}">Submit your project</a>
+          </span>
+          {% else %}
+          <a class="nav-item nav-link" href="{% url 'login' %}">Login
+          </a>
+          <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </main>
+  <footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+    </script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+  </footer>
+</body>
+
+</html>

@@ -17,8 +17,9 @@ This is an application whereby users can rate their favorite websites and also d
 
 
 ## Figma Link
-
-
+```
+https://www.figma.com/file/TKcES6XuIO8pnvJhV4BUNf/wix-projects?node-id=0%3A1
+```
   
 ## Setup and Installation  
 To get the project .......  
