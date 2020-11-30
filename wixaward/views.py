@@ -17,11 +17,12 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'user/register.html', {'form': form})
 
+
 @login_required
 def profile(request):
     if request.method == 'POST':
         form_user = UserUpdateForm(request.POST, instance=request.user)
-        form_profile = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        form_profile = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
 
         if form_user.is_valid() and form_profile.is_valid():
             form_user.save()
@@ -31,8 +32,7 @@ def profile(request):
             return redirect('profile')
     else:
         form_user = UserUpdateForm(instance=request.user)
-        # import pdb;pdb.set_trace()
-        form_profile = ProfileUpdateForm(instance=request.user.profile)
+        form_profile = ProfileUpdateForm(instance=request.user)
 
     context = {
         'form_user': form_user,

@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'wixproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'wixproject',
+        'NAME': 'wixaward',
         'USER': 'moringa',
         'PASSWORD': 'Access',
     }
@@ -151,6 +151,15 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_REDIRECT_URL = 'pages-home'
+LOGIN_URL ='login'
+
+#ratings
+STAR_RATINGS_RERATE = False
+STAR_RATINGS_RANGE = 5
+STAR_RATINGS_ANONYMOUS = False
+
 
 
 # Email configurations remember to install python-decouple
