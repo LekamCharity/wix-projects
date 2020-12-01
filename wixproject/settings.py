@@ -182,7 +182,6 @@ STAR_RATINGS_RERATE = False
 STAR_RATINGS_RANGE = 5
 STAR_RATINGS_ANONYMOUS = False
 
-
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
 
