@@ -39,9 +39,7 @@ TEMPLATE_DIRS = (
 # Application definition
 
 INSTALLED_APPS = [
-    'tinymce',
     'django.contrib.admin',
-    'pyuploadcare.dj',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -50,7 +48,6 @@ INSTALLED_APPS = [
     'bootstrap4',
     'wixaward.apps.WixawardConfig',
     'crispy_forms', 
-    'url_or_relative_url_field',
     'star_ratings',
     'mathfilters',
     'wixapp',
