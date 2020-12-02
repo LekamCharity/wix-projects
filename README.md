@@ -15,6 +15,7 @@ This is an application whereby users can rate their favorite websites and also d
 
 ## Live Link
 
+ https://wixapplication.herokuapp.com/
 
 ## Figma Link
 ```
